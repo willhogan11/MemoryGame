@@ -1,0 +1,52 @@
+h1 
+{
+    text-align: center;
+}
+
+.mainDiv
+{
+	width: 650px; 
+	height: 620px; 
+	margin: auto; 
+	border: solid 5px grey; 
+	padding:10px; 
+	font-family: arial; 
+	color: navy; 
+	box-shadow: 5px 5px 3px grey;
+	background-color: white;
+    position: relative;
+}
+
+input
+{
+	display: inline;
+	width: 30px;
+	border: solid 2px grey; 
+	margin: auto;
+	text-align: center;
+}
+
+.btnDiv
+{
+	width: 130px;
+}
+
+img 
+{
+	width:250px; 
+	height:250px; 
+	display: none;
+}
+
+button
+{
+    height: 110px;
+    width: 110px;
+    margin: 5px;
+}
+
+.usersGuess
+{
+	text-align: center;
+	margin-top: 20px;
+}
