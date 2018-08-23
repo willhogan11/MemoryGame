@@ -137,3 +137,159 @@ function reset(){
         document.getElementById(guessIds[i]).value = "";
     }
 }
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Test Script Code.
+1. Create Buttons at runtime dynamically depending upon the users level.
+2. The plan should be to have an initial 1 box, which increase sequentially as the player guesses the correct numbers.
+3. The game ends when the user cant remember the numbers at each level.
+4. The final Score should show the level the player reached, the score the got.
+5. There should also be a Timer at each level, which should increase as the player progresses through the levels. */
+
+
+// Create Button Test.
+function testButtonCreate() {
+
+	var level = 15;
+	var buttonIds = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10", "b11", "b12", "b13", "b14", "b15"];
+	var btnVar = "";
+
+	switch(level){
+		case 1:
+			level == 1;
+			var btnA = document.createElement("BUTTON");
+			btnA.setAttribute("id", buttonIds[0]);
+			btnA.setAttribute("class", "btn btn-primary");
+			document.body.appendChild(btnA);
+			break;
+		case 2:
+			level == 2;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+		case 3:
+			level == 3;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+		case 4:
+			level == 4;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+		case 5:
+			level == 5;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+		case 6:
+			level == 6;
+			var btnA = document.createElement("BUTTON");
+			btnA.setAttribute("id", buttonIds[0]);
+			btnA.setAttribute("class", "btn btn-primary");
+			document.body.appendChild(btnA);
+			break;
+		case 7:
+			level == 7;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+		case 8:
+			level == 8;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+		case 9:
+			level == 9;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+		case 10:
+			level == 10;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+		case 11:
+			level == 11;
+			var btnA = document.createElement("BUTTON");
+			btnA.setAttribute("id", buttonIds[0]);
+			btnA.setAttribute("class", "btn btn-primary");
+			document.body.appendChild(btnA);
+			break;
+		case 12:
+			level == 12;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+		case 13:
+			level == 13;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+		case 14:
+			level == 14;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+		case 15:
+			level == 15;
+			for(i = 0; i < level; i++){
+				btnVar = document.createElement("BUTTON");
+				btnVar.setAttribute("id", buttonIds[0]);
+				btnVar.setAttribute("class", "btn btn-primary");
+				document.body.appendChild(btnVar);
+			}
+			break;
+
+		default:
+			document.write("Test");
+	}
+}
