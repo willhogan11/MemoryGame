@@ -1,5 +1,6 @@
 // Declare global Values that will be accessed during the Game.
-const maxSize = 15;  
+const maxSize = 15;
+var gameLevel = 0;
 var randNumArr = [];
 var usersGuesses = [];
 var usersGuessesParsed = [];
@@ -9,7 +10,7 @@ var guessIds = ["guess1", "guess2", "guess3", "guess4", "guess5", "guess6", "gue
 
 // Calculate Unique Random List
 function calcUniqueRandomNums(){
-    reset(); // 
+    reset();
     document.getElementById("usersGuess").style.visibility = "hidden";
     while(randNumArr.length < maxSize){
         var randomnumber = Math.floor(Math.random()*50) + 1;
@@ -136,4 +137,109 @@ function reset(){
     for(var i = 0; i < maxSize; i++){
         document.getElementById(guessIds[i]).value = "";
     }
+}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Test Script Code.
+1. Create Buttons at runtime dynamically depending upon the users level. [Done with Test, see below, need to incorporate into game].
+2. The plan should be to have an initial 1 box, which increase sequentially as the player guesses the correct numbers.
+3. The game ends when the user can't remember the numbers at each level.
+4. The final Score should show the level the player reached, the score the got.
+5. There should also be a Timer at each level, which should increase as the player progresses through the levels. */
+
+
+// Create Button Test.
+// function testButtonCreate() {
+
+function createButtons(){
+	// var level = 11;
+	// var buttonIds = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10", "b11", "b12", "b13", "b14", "b15"];
+	var btnVar = "";
+
+	switch(level){
+		case 1:
+			gameLevel == 1;
+			buttonAttributes(btnVar);
+			break;
+		case 2:
+			gameLevel == 2;
+			buttonAttributes(btnVar);
+			break;
+		case 3:
+			gameLevel == 3;
+			buttonAttributes(btnVar);
+			break;
+		case 4:
+			gameLevel == 4;
+			buttonAttributes(btnVar);
+			break;
+		case 5:
+			gameLevel == 5;
+			buttonAttributes(btnVar);
+			break;
+		case 6:
+			gameLevel == 6;
+			buttonAttributes(btnVar);
+			break;
+		case 7:
+			gameLevel == 7;
+			buttonAttributes(btnVar);
+			break;
+		case 8:
+			gameLevel == 8;
+			buttonAttributes(btnVar);
+			break;
+		case 9:
+			gameLevel == 9;
+			buttonAttributes(btnVar);
+			break;
+		case 10:
+			gameLevel == 10;
+			buttonAttributes(btnVar);
+			break;
+		case 11:
+			gameLevel == 11;
+			buttonAttributes(btnVar);
+			break;
+		case 12:
+			gameLevel == 12;
+			buttonAttributes(btnVar);
+			break;
+		case 13:
+			gameLevel == 13;
+			buttonAttributes(btnVar);
+			break;
+		case 14:
+			gameLevel == 14;
+			buttonAttributes(btnVar);
+			break;
+		case 15:
+			gameLevel == 15;
+			buttonAttributes(btnVar);
+			break;
+		default:
+			document.write("Level is 0");
+	}
+}
+
+
+function buttonAttributes(btnVar){
+	if(gameLevel == 1){
+		var btnA = document.createElement("BUTTON");
+		btnA.setAttribute("id", idArr[0]);
+		btnA.setAttribute("class", "btn btn-primary");
+		document.body.appendChild(btnA);
+	}
+	else {
+		for(i = 0; i < gameLevel; i++){
+			btnVar = document.createElement("BUTTON");
+			btnVar.setAttribute("id", idArr[i]);
+			btnVar.setAttribute("class", "btn btn-primary");
+			document.body.appendChild(btnVar);
+		}
+	}
 }
