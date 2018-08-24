@@ -1,6 +1,7 @@
 // Declare global Values that will be accessed during the Game.
 const maxSize = 15;
 var gameLevel = 1;
+var countMatches, countTotalMatches = 0;
 var randNumArr = [];
 var usersGuesses = [];
 var usersGuessesParsed = [];
@@ -9,19 +10,23 @@ var guessIds = ["guess1", "guess2", "guess3", "guess4", "guess5", "guess6", "gue
 
 
 // Calculate Unique Random List
-function calcUniqueRandomNums(){
-    reset();
-    document.getElementById("usersGuess").style.visibility = "hidden";
-    while(randNumArr.length < maxSize){
-        var randomnumber = Math.floor(Math.random()*50) + 1;
-        if(randNumArr.indexOf(randomnumber) > -1) continue;
-        randNumArr[randNumArr.length] = randomnumber;
-    }
-    for(var i = 0; i < maxSize; i++){
-        document.getElementById(idArr[i]).innerText = randNumArr[i];
-    }
-    document.getElementById("startBtn").disabled = true;
-    setTimer();
+function startGame(){
+	do {
+		createButtons(idArr, gameLevel);
+
+		document.getElementById("usersGuess").style.visibility = "hidden";
+		while(randNumArr.length < gameLevel){
+			var randomnumber = Math.floor(Math.random()*50) + 1;
+			if(randNumArr.indexOf(randomnumber) > -1) continue;
+			randNumArr[randNumArr.length] = randomnumber;
+		}
+		for(var i = 0; i < gameLevel; i++){
+			document.getElementById(idArr[i]).innerText = randNumArr[i];
+		}
+		document.getElementById("startBtn").disabled = true;
+		setTimer();
+
+	}while(gameLevel == countTotalMatches);
 }
 
 
@@ -39,7 +44,7 @@ function setTimer() {
 
 // Clear the nums when Timeout. 
 function clearNumVisibility() {
-    for(var i = 0; i < maxSize; i++){
+    for(var i = 0; i < gameLevel; i++){
         document.getElementById(idArr[i]).innerText = "";
     }
 }
@@ -48,6 +53,7 @@ function clearNumVisibility() {
 // Make Users Guesses fields visible as soon as random numbers disappear. 
 function makeVisible(){
     document.getElementById("usersGuess").style.visibility = "visible";
+	createGuessInputs(guessIds, gameLevel);
 }
 
 
@@ -55,7 +61,7 @@ function makeVisible(){
 function parseValues(){
     usersGuesses = removeDuplicates(usersGuesses);
 
-    for(var i = 0; i < maxSize; i++){
+    for(var i = 0; i < gameLevel; i++){
         usersGuesses[i] = document.getElementById(guessIds[i]).value;        
     }
 
@@ -80,7 +86,6 @@ function removeDuplicates(arr){
 // Check for the matching numbers. 
 function checkMatchedNums(){
     parseValues();
-    var countMatches, countTotalMatches = 0;
 
     Array.prototype.diff = function(arr2) {
         var ret = [];
@@ -97,6 +102,13 @@ function checkMatchedNums(){
     countTotalMatches = randNumArr.diff(usersGuessesParsed).length;
 
     displayResults(countMatches, countTotalMatches);
+
+	if(countTotalMatches == gameLevel){
+		gameLevel++;
+	}
+	else {
+		document.write("countTotalMatches != gameLevel");
+	}
 }
 
 
@@ -108,7 +120,7 @@ function displayResults(countMatches, countTotalMatches){
     }
     else if(countTotalMatches > 14){
         document.getElementById("resultScore").innerText = "You matched All the numbers, well done!";
-        for(var i = 0; i < maxSize; i++){
+        for(var i = 0; i < gameLevel; i++){
             document.getElementById(idArr[i]).innerText = randNumArr[i];
         }
     }
@@ -116,7 +128,7 @@ function displayResults(countMatches, countTotalMatches){
         document.getElementById("resultScore").innerText = "You matched the numbers: " + countMatches;
         document.getElementById("totalCount").innerHTML = "Total Score: " + countTotalMatches;
     
-        for(var i = 0; i < maxSize; i++){
+        for(var i = 0; i < gameLevel; i++){
             document.getElementById(idArr[i]).innerText = randNumArr[i];
         }
     }
@@ -134,7 +146,7 @@ function reset(){
     document.getElementById("resultScore").innerText = "";
     document.getElementById("totalCount").innerHTML = "";
 
-    for(var i = 0; i < maxSize; i++){
+    for(var i = 0; i < gameLevel; i++){
         document.getElementById(guessIds[i]).value = "";
     }
 }
@@ -153,12 +165,7 @@ function reset(){
 5. There should also be a Timer at each level, which should increase as the player progresses through the levels. */
 
 
-// Create Button Test.
-// function testButtonCreate() {
-
 function createButtons(idArr, gameLevel){
-	// var level = 11;
-	// var buttonIds = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10", "b11", "b12", "b13", "b14", "b15"];
 	var btnVar = "";
 
 	switch(gameLevel){
@@ -246,3 +253,99 @@ function buttonAttributes(btnVar){
 		}
 	}
 }
+
+
+
+function createGuessInputs(guessIds, gameLevel){
+	var inputVar = "";
+
+	switch(gameLevel){
+		case 1:
+			gameLevel == 1;
+			inputAttributes(inputVar);
+			break;
+		case 2:
+			gameLevel == 2;
+			inputAttributes(inputVar);
+			break;
+		case 3:
+			gameLevel == 3;
+			inputAttributes(inputVar);
+			break;
+		case 4:
+			gameLevel == 4;
+			inputAttributes(inputVar);
+			break;
+		case 5:
+			gameLevel == 5;
+			inputAttributes(inputVar);
+			break;
+		case 6:
+			gameLevel == 6;
+			inputAttributes(inputVar);
+			break;
+		case 7:
+			gameLevel == 7;
+			inputAttributes(inputVar);
+			break;
+		case 8:
+			gameLevel == 8;
+			inputAttributes(inputVar);
+			break;
+		case 9:
+			gameLevel == 9;
+			inputAttributes(inputVar);
+			break;
+		case 10:
+			gameLevel == 10;
+			inputAttributes(inputVar);
+			break;
+		case 11:
+			gameLevel == 11;
+			inputAttributes(inputVar);
+			break;
+		case 12:
+			gameLevel == 12;
+			inputAttributes(inputVar);
+			break;
+		case 13:
+			gameLevel == 13;
+			inputAttributes(inputVar);
+			break;
+		case 14:
+			gameLevel == 14;
+			inputAttributes(inputVar);
+			break;
+		case 15:
+			gameLevel == 15;
+			inputAttributes(inputVar);
+			break;
+		default:
+			document.write("Level is 0");
+	}
+}
+
+
+
+function inputAttributes(inputVar){
+	if(gameLevel == 1){
+		inputVar = document.createElement("INPUT");
+		inputVar.setAttribute("id", "guess1");
+		inputVar.setAttribute("type", "text");
+		inputVar.setAttribute("class", "usersGuess");
+		document.body.appendChild(inputVar);
+	}
+	else {
+		for(i = 0; i < gameLevel; i++){
+			inputVar = document.createElement("INPUT");
+			inputVar.setAttribute("id", guessIds[i]);
+			inputVar.setAttribute("type", "text");
+			inputVar.setAttribute("class", "usersGuess");
+			document.body.appendChild(inputVar);
+		}
+	}
+}
+
+
+
+
