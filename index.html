@@ -10,35 +10,17 @@
 		<title>Memory Game</title>
 	</head>
 
-	<body class="mainDiv" onload="myFunction()">
-		<!--<button style="position: absolute; top: 13.5%; left: 14%; text-align: center; height:45px;"
-				id="startBtn" type="button" class="btn btn-success" onclick="startGame()">Start Game</button>-->
+	<body class="mainDiv" onload="hideUserInput();">
+		<h1>Memory Game</h1>
+		<button style="height:45px;"
+				id="startBtn" type="button" class="btn btn-success" onclick="startGame()">Start Game</button>
 
-			<h1>Memory Game</h1>
-			<button style="height:45px;"
-					id="startBtn" type="button" class="btn btn-success" onclick="startGame()">Start Game</button>
-
-			<div id="usersGuess"> <!--class="usersGuess">-->
-				<h4>How many could you remember?</h4>
-<!--				<input id="guess1" type="text">
-				<input id="guess2" type="text">
-				<input id="guess3" type="text">
-				<input id="guess4" type="text">
-				<input id="guess5" type="text">
-				<input id="guess6" type="text">
-				<input id="guess7" type="text">
-				<input id="guess8" type="text">
-				<input id="guess9" type="text">
-				<input id="guess10" type="text">
-				<input id="guess11" type="text">
-				<input id="guess12" type="text">
-				<input id="guess13" type="text">
-				<input id="guess14" type="text">
-				<input id="guess15" type="text">-->
-				<button style="height:35px; margin-top: 10px;" id="checkNums" type="button" class="btn btn-warning" onclick="checkMatchedNums()">Submit</button>
-				<p id="resultScore"></p>
-				<p style="color: red;" id="totalCount"></p>
-			</div>
+		<div id="usersGuess">
+			<h4>How many could you remember?</h4>
+			<button style="height:35px; margin-top: 10px;" id="checkNums" type="button" class="btn btn-warning" onclick="checkMatchedNums()">Submit</button>
+			<p id="resultScore"></p>
+			<p style="color: red;" id="totalCount"></p>
+		</div>
 	</body>
 	
 </html>
