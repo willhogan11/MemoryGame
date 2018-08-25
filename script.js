@@ -37,6 +37,7 @@ function startGame(){
 	}
 	document.getElementById("startBtn").disabled = true;
 	setTimer();
+	displayCurrentLevel();
 }
 
 
@@ -125,7 +126,12 @@ function checkMatchedNums(){
 	else {
 		document.getElementById("totalCount").innerText = "GAME OVER!\nYou Reached level :" + gameLevel;
 		removeFields();
+		reset();
 	}
+}
+
+function displayCurrentLevel(){
+	document.getElementById("totalCount").innerHTML = "LEVEL : " + gameLevel;
 }
 
 
@@ -175,8 +181,8 @@ function reset(){
 /* Test Script Code.
 1. Create Buttons at runtime dynamically depending upon the users level. [Done with Test, see below, need to incorporate into game].
 2. The plan should be to have an initial 1 box, which increase sequentially as the player guesses the correct numbers [DONE]
-	a. Need to figure out where to have the function createButtons called and which params are required.
-3. The game ends when the user can't remember the numbers at each level [DONE]
+	a. Need to figure out where to have the function createButtons called and which params are required. [DONE]
+3. The game ends when the user can't remember the numbers at each level [W.I.P]
 4. The final Score should show the level the player reached, the score the got [DONE]
 5. There should also be a Timer at each level, which should increase as the player progresses through the levels. */
 
@@ -342,12 +348,16 @@ function createGuessInputs(guessIds, gameLevel){
 
 
 function inputAttributes(inputVar){
+	var divElement = document.getElementById("testUserGuess");
+
 	if(gameLevel == 1){
 		inputVar = document.createElement("INPUT");
 		inputVar.setAttribute("id", guessIds[0]);
 		inputVar.setAttribute("type", "text");
 		inputVar.setAttribute("class", "usersGuess");
-		document.body.appendChild(inputVar);
+		divElement.setAttribute("class", "testUserGuess");
+		divElement.appendChild(inputVar);
+		document.body.appendChild(divElement);
 	}
 	else {
 		for(i = 0; i < gameLevel; i++){
@@ -355,7 +365,9 @@ function inputAttributes(inputVar){
 			inputVar.setAttribute("id", guessIds[i]);
 			inputVar.setAttribute("type", "text");
 			inputVar.setAttribute("class", "usersGuess");
-			document.body.appendChild(inputVar);
+			divElement.setAttribute("class", "testUserGuess");
+			divElement.appendChild(inputVar);
+			document.body.appendChild(divElement);
 		}
 	}
 }
@@ -364,11 +376,12 @@ function inputAttributes(inputVar){
 function removeFields(){
 	var btn = "";
 	var guessVar = "";
+	var divElement = document.getElementById("testUserGuess");
 
 	for(var i = 0; i < gameLevel; i++){
 		btn = document.getElementById(idArr[i]);
 		document.body.removeChild(btn);
 		guessVar = document.getElementById(guessIds[i]);
-		document.body.removeChild(guessVar);
+		divElement.removeChild(guessVar);
 	}
 }
