@@ -26,6 +26,7 @@ function repolulateOtherIds(){
 // Calculate Unique Random List
 function startGame(){
 	createButtons(idArr, gameLevel);
+	newGameReset();
 
 	while(randNumArr.length < gameLevel){
 		var randomnumber = Math.floor(Math.random()*50) + 1;
@@ -121,12 +122,19 @@ function checkMatchedNums(){
 		console.log("Game Level: " + gameLevel);
 		guessIds = repopulateGuessIds();
 		idArr = repolulateOtherIds();
-		startGame();
+
+		if(gameLevel > maxSize && gameLevel == countTotalMatches){
+			document.getElementById("totalCount").innerHTML = "You Completed All " + maxSize + " Levels!, Well Done!";
+			gameLevel = 1;
+		}
+		else{
+			startGame();
+		}
 	}
 	else {
 		document.getElementById("totalCount").innerText = "GAME OVER!\nYou Reached level :" + gameLevel;
 		removeFields();
-		reset();
+		gameLevel = 1;
 	}
 }
 
@@ -174,17 +182,10 @@ function reset(){
 }
 
 
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/* Test Script Code.
-1. Create Buttons at runtime dynamically depending upon the users level. [Done with Test, see below, need to incorporate into game].
-2. The plan should be to have an initial 1 box, which increase sequentially as the player guesses the correct numbers [DONE]
-	a. Need to figure out where to have the function createButtons called and which params are required. [DONE]
-3. The game ends when the user can't remember the numbers at each level [W.I.P]
-4. The final Score should show the level the player reached, the score the got [DONE]
-5. There should also be a Timer at each level, which should increase as the player progresses through the levels. */
+function newGameReset(){
+	document.getElementById("resultScore").innerText = "";
+	document.getElementById("totalCount").innerHTML = "";
+}
 
 
 function createButtons(idArr, gameLevel){
@@ -349,6 +350,13 @@ function createGuessInputs(guessIds, gameLevel){
 
 function inputAttributes(inputVar){
 	var divElement = document.getElementById("testUserGuess");
+	var dynBtn = document.createElement("BUTTON");
+
+	dynBtn.setAttribute("id", "checkNums");
+	dynBtn.textContent = "Submit";
+	dynBtn.setAttribute("onclick", "checkMatchedNums()");
+	dynBtn.setAttribute("class", "btn btn-warning");
+	dynBtn.setAttribute("style", "height:35px; width: 70px; display: flex;");
 
 	if(gameLevel == 1){
 		inputVar = document.createElement("INPUT");
@@ -357,6 +365,7 @@ function inputAttributes(inputVar){
 		inputVar.setAttribute("class", "usersGuess");
 		divElement.setAttribute("class", "testUserGuess");
 		divElement.appendChild(inputVar);
+		divElement.appendChild(dynBtn);
 		document.body.appendChild(divElement);
 	}
 	else {
@@ -367,6 +376,7 @@ function inputAttributes(inputVar){
 			inputVar.setAttribute("class", "usersGuess");
 			divElement.setAttribute("class", "testUserGuess");
 			divElement.appendChild(inputVar);
+			divElement.appendChild(dynBtn);
 			document.body.appendChild(divElement);
 		}
 	}
@@ -377,6 +387,8 @@ function removeFields(){
 	var btn = "";
 	var guessVar = "";
 	var divElement = document.getElementById("testUserGuess");
+	var dynBtn = document.getElementById("checkNums");
+	divElement.removeChild(dynBtn);
 
 	for(var i = 0; i < gameLevel; i++){
 		btn = document.getElementById(idArr[i]);
